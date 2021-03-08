@@ -6,12 +6,21 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Trabalho</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {
                 background-color: #DCFFB0;
+            }
+            .container{
+                position: absolute;
+                width: 100%;
+                height: 50px;
+                left: 0%;
+                top: 15%;
+                background: #DCFFB0;
+
             }
             .menu{
                 position: absolute;
@@ -33,7 +42,6 @@ and open the template in the editor.
                 width: 99.5%;
                 margin-top: 41px;
                 left: -3%;
-                background-color: white;
                 height: 551px;
                 background-color: #DCFFB0;
 
@@ -53,7 +61,16 @@ and open the template in the editor.
                 line-height: 14px;
                 color: black;
             }
-            label {
+            .text1 {
+                position: absolute;
+                width: 88px;
+                height: 20px;
+                left: 5%;
+                top: 75%;
+                background: #F9FFFD;
+                border-radius: 10px;
+            }
+            .label1{
                 position: absolute;
                 left: 46%;
                 top: 49%;
@@ -65,9 +82,44 @@ and open the template in the editor.
                 text-align: center;
 
             }
+            .label2 {
+                position: absolute;
+                left: 5%;
+                top: 15%;
+            }
+            .label3 {
+                position: absolute;
+                left: 20%;
+                top: 15%;
+            }
+            .button1 {
+                position: absolute;
+                left: 72%;
+                top: 75%;
+                width: 100px;
+                height: 25px;
+                background: #85A7FE;
+                border-radius: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                text-align: center;
+                color: #B30D0D;
+            }
+            .text2 {
+                position: absolute;
+                width: 600px;
+                height: 20px;
+                left: 25%;
+                top: 75%;
+                background-color: #F9FFFD;
+                border-radius: 10px;
+            }
             .triangulo {
                 position: absolute;
-                left: 12%;
+                left: 16%;
                 top: 40%;
                 border-top: 19px solid #F59A9A; 
                 border-left: 19px solid transparent; 
@@ -78,13 +130,24 @@ and open the template in the editor.
             </style>
         </head>
         <body>
+            <div class="container">
+                <form action="">
+                    <label for="descricao" class="label2">Id</label>
+                    <input class="text1" type="text" id="id"/>
+                    <label for="descricao" class="label3">Descrição</label>
+                    <input class="text2" type="text" id="descricao"/>
+                    <input class="button1" type="button" value="Salvar" />
+
+                </form>
+
+            </div>
             <div class="menu">
-                <a href="" target="meuframe">Cadastros</a>
+                <a href="" target="meuframe">Categoria</a>
                 <div class="triangulo"></div>
             </div>
+
             <div class="copy">
-                <label>Copyright @ Livre</label>
+                <label class="label1">Copyright @ Livre</label>
             </div>
         </body>
-        <iframe src="" name="meuframe"></iframe>
     </html>

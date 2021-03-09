@@ -39,12 +39,12 @@ and open the template in the editor.
                 background: #C4C4C4;
             }
             iframe{
-                width: 99.5%;
-                margin-top: 41px;
-                left: -3%;
-                height: 551px;
-                background-color: #DCFFB0;
-
+                position: absolute;
+                width: 80%;
+                height: 67%;
+                left: 10%;
+                top: 25%;
+                background: #F9FFFD;
             }
             a{
                 position: absolute;
@@ -65,9 +65,18 @@ and open the template in the editor.
                 position: absolute;
                 width: 88px;
                 height: 20px;
-                left: 5%;
-                top: 75%;
+                left: 12%;
+                top: 65%;
                 background: #F9FFFD;
+                border-radius: 10px;
+            }
+            .text2 {
+                position: absolute;
+                width: 600px;
+                height: 20px;
+                left: 28%;
+                top: 65%;
+                background-color: #F9FFFD;
                 border-radius: 10px;
             }
             .label1{
@@ -84,18 +93,18 @@ and open the template in the editor.
             }
             .label2 {
                 position: absolute;
-                left: 5%;
-                top: 15%;
+                left: 13%;
+                top: 3%;
             }
             .label3 {
                 position: absolute;
-                left: 20%;
-                top: 15%;
+                left: 28%;
+                top: 3%;
             }
             .button1 {
                 position: absolute;
-                left: 72%;
-                top: 75%;
+                left: 78%;
+                top: 64%;
                 width: 100px;
                 height: 25px;
                 background: #85A7FE;
@@ -108,15 +117,6 @@ and open the template in the editor.
                 text-align: center;
                 color: #B30D0D;
             }
-            .text2 {
-                position: absolute;
-                width: 600px;
-                height: 20px;
-                left: 25%;
-                top: 75%;
-                background-color: #F9FFFD;
-                border-radius: 10px;
-            }
             .triangulo {
                 position: absolute;
                 left: 16%;
@@ -126,28 +126,41 @@ and open the template in the editor.
                 border-right: 19px solid transparent; 
                 height: 0; 
                 width: 0; 
+            }
+            table{
+                position: absolute;
+                width: 512px;
+                height: 208px;
+                left: 17px;
+                top: 114px;
+                background: #F9FFFD;
+            }
+            table, tr, td
+            {
+                border: red solid 1px;   
+            }
 
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <form action="">
-                    <label for="descricao" class="label2">Id</label>
-                    <input class="text1" type="text" id="id"/>
-                    <label for="descricao" class="label3">Descrição</label>
-                    <input class="text2" type="text" id="descricao"/>
-                    <input class="button1" type="button" value="Salvar" />
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form action="">
+                <label for="id" class="label2">Id</label>
+                <input class="text1" type="text" id="id"/>
+                <label for="descricao" class="label3">Descrição</label>
+                <input class="text2" type="text" id="descricao"/>
+                <input class="button1" type="button" value="Salvar" />
 
-                </form>
+            </form>
 
-            </div>
-            <div class="menu">
-                <a href="" target="meuframe">Categoria</a>
-                <div class="triangulo"></div>
-            </div>
+        </div>
+        <div class="menu">
+            <a href="" target="meuframe">Categoria</a>
+            <div class="triangulo"></div>
+        </div>
 
-            <div class="copy">
-                <label class="label1">Copyright @ Livre</label>
-            </div>
-        </body>
-    </html>
+        <div class="copy">
+            <label class="label1">Copyright @ Livre</label>
+        </div>
+    </body>
+</html>

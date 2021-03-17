@@ -38,7 +38,7 @@ and open the template in the editor.
                 background-color: #DCFFB0;
 
             }
-            a{
+            .cad{
                 position: absolute;
                 left: 3%;
                 top: 2%;
@@ -52,6 +52,11 @@ and open the template in the editor.
                 font-size: 20px;
                 line-height: 14px;
                 color: black;
+            }
+            .lista {
+                position: absolute;
+                left: 3%;
+                top: 2%;
             }
             label {
                 position: absolute;
@@ -74,17 +79,39 @@ and open the template in the editor.
                 border-right: 19px solid transparent; 
                 height: 0; 
                 width: 0; 
+            }
 
-            </style>
-        </head>
-        <body>
-            <div class="menu">
-                <a href="" target="meuframe">Cadastros</a>
-                <div class="triangulo"></div>
+            .descricao{
+                display: none;
+            }
+
+            .item:hover .descricao{
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="menu">
+            <a class="cad">Cadastro</a>
+            <div class="triangulo">
+                <div class="item">
+                    <a class="aa" href="">⠀</a>
+                    <div class="descricao">
+                        <div>
+                            <div><a href="cadastroProduto.html" target="meuframe">Produto</a></div>
+                            <div><a href="cadastroCategoria.html" target="meuframe">Categoria</a></div>
+                            <div><a href="consultaProduto.html" target="meuframe">Consulta</a></div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="copy">
-                <label>Copyright @ Livre</label>
-            </div>
-        </body>
-        <iframe src="" name="meuframe"></iframe>
-    </html>
+        </div>
+        <div class="copy">
+            <label>Copyright @ Livre</label>
+        </div>
+    </body>
+    <iframe src="" name="meuframe"></iframe>
+</html>

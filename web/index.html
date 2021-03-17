@@ -81,12 +81,69 @@ and open the template in the editor.
                 width: 0; 
             }
 
-            .descricao{
-                display: none;
+            .lista{
+                display: inline-block;
+                background-color: #C4C4C4;
+                padding: 2px;
+            }
+            .lista li {
+                display: inline;
+                background-color: #C4C4C4;
+                padding: 10px;
+                border-radius: 50%
             }
 
-            .item:hover .descricao{
+            .sublista{
+                display: none;
+                position: absolute;
+                background-color: #C4C4C4;
+                min-width: 100px;
+                z-index: 1;
+
+            }
+
+            .sublista ul li{
                 display: block;
+                text-align: left;
+            }
+            .expande-sublista:hover .sublista{
+                display: block;
+            }
+            .categoria {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
+            .produto {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
+            .consulta {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
+            a:link 
+            { 
+                text-decoration:none; 
+            } 
+            li {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                color: black;
             }
 
         </style>
@@ -94,19 +151,18 @@ and open the template in the editor.
     <body>
 
         <div class="menu">
-            <a class="cad">Cadastro</a>
-            <div class="triangulo">
-                <div class="item">
-                    <a class="aa" href="">⠀</a>
-                    <div class="descricao">
+            <ul class="lista">
+                <li class="expande-sublista"> Cadastro 
+                    <div class="sublista">
                         <div>
-                            <div><a href="cadastroProduto.html" target="meuframe">Produto</a></div>
-                            <div><a href="cadastroCategoria.html" target="meuframe">Categoria</a></div>
-                            <div><a href="consultaProduto.html" target="meuframe">Consulta</a></div>
+                            <div><a class="produto" href="cadastroProduto.html" target="meuframe">Produto</a></div>
+                            <div><a class="categoria" href="cadastroCategoria.html" target="meuframe">Categoria</a></div>
+                            <div><a class="consulta" href="consultaProduto.html" target="meuframe">Consulta</a></div>
                         </div>
                     </div>
-
-                </div>
+            </ul>
+            <a class="cad"></a>
+            <div class="triangulo">
             </div>
         </div>
         <div class="copy">

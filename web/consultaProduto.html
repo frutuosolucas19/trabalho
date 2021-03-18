@@ -151,6 +151,70 @@ and open the template in the editor.
             {
                 border: red solid 1px;   
             }
+            .lista{
+                display: inline-block;
+                background-color: #C4C4C4;
+                padding: 2px;
+                position: absolute;
+                left: 3%;
+                top: -25%;
+            }
+            .lista li {
+                display: inline;
+                background-color: #C4C4C4;
+                padding: 10px;
+                border-radius: 50%
+            }
+
+            .sublista{
+                display: none;
+                position: absolute;
+                left: 50px;
+                top: 45px;
+                height: 25px;
+                background-color: #C4C4C4;
+                min-width: 130px;
+                z-index: 1;
+
+            }
+
+            .sublista ul li{
+                display: block;
+                text-align: left;
+            }
+            .expande-sublista:hover .sublista{
+                display: block;
+            }
+            .consulta {
+                position: relative;
+                left:-20px;
+                top: 13px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
+            .index {
+                position: relative;
+                left: 10px;
+                top:5px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
+            li {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                color: black;
+            }
 
         </style>
     </head>
@@ -166,8 +230,16 @@ and open the template in the editor.
             </form>
 
         </div>
-        <div class="menu">
-            <a href="" target="meuframe">Consulta Produto</a>
+                <div class="menu">
+                <ul class="lista">
+                <li class="expande-sublista"> <a class="consulta">Consulta Produto</a> 
+                    <div class="sublista">
+                        <div>
+                            <div><a class="index" href="index.html">Tela Inicial</a></div>
+                        </div>
+                    </div>
+            </ul>
+
             <div class="triangulo"></div>
         </div>
         <div class="copy">

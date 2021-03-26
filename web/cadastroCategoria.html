@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Trabalho</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             body {
                 background-color: #DCFFB0;
@@ -213,15 +214,49 @@ and open the template in the editor.
             }
 
         </style>
+        
+        <script>
+            $(document).ready(function () {
+                //consultar dados
+                $("#search").click(function () {
+                    $.get("http://localhost:8080/Trabalho/Venda/Categoria", function (data, status) {
+                        display(data);
+                    });
+                });
+
+                //gravar dados
+                $("#gravar").click(function () {
+                    var payload = {
+                        id: $("#id").val(),
+                        descricao: $("#descricao").val(),
+                    };
+
+                    payload = JSON.stringify(payload);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria",
+                        data: payload,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data, status) {
+                            alert('inserido com sucesso ');
+                        }
+                    });
+                });
+            });
+        </script>
+
+
     </head>
     <body>
         <div class="container">
             <form action="">
-                <label for="id" class="label2">Id</label>
+                <label class="label2">Id</label>
                 <input class="text1" type="text" id="id"/>
-                <label for="descricao" class="label3">Descrição</label>
+                <label class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
-                <input class="button1" type="button" value="Salvar" />
+                <input id="gravar" class="button1" type="button" value="Salvar" />
 
             </form>
             <div class="menu">
@@ -236,14 +271,33 @@ and open the template in the editor.
 
                 <div class="triangulo"></div>
             </div>
-            <table>
-                <tr>
+            
+            <div id="dados">
+                <input type="button" id="search" value="Carregar" />
+                <table>
+                    <thead>
                     <th>Id</th>
                     <th>Descrição</th>
-                    <th>⠀⠀⠀⠀⠀⠀⠀</th>
-                    <th>⠀⠀⠀⠀⠀⠀⠀</th>
-                </tr>
-            </table>
+                    </thead>
+                    <tbody id="categorias">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+                function display(dados) {
+                    var text = "";
+                    for (ob in dados) {
+                        text += "<tr>";
+                        text += "<td>" + dados[ob].id + "</td>";
+                        text += "<td>" + dados[ob].descricao + "</td>";
+                        text += "</tr>";
+                    }
+                    document.getElementById("categorias").innerHTML = text;
+                }
+            </script>
+
             <div class="copy">
                 <label>Copyright @ Livre</label>
             </div>

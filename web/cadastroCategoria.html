@@ -47,21 +47,7 @@ and open the template in the editor.
                 top: 25%;
                 background: #F9FFFD;
             }
-            a{
-                position: absolute;
-                left: 3%;
-                top: 2%;
-                text-decoration: none;
-                padding: 10px;
-                margin-bottom: 10px;
-                margin-top: 10px;
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 20px;
-                line-height: 14px;
-                color: black;
-            }
+            
             .text1 {
                 position: absolute;
                 width: 88px;
@@ -294,6 +280,8 @@ and open the template in the editor.
                     <thead>
                     <th>Id</th>
                     <th>Descrição</th>
+                    <th>⠀⠀⠀⠀⠀⠀⠀</th>
+                    <th>⠀⠀⠀⠀⠀⠀⠀</th>
                     </thead>
                     <tbody id="categorias">
 
@@ -308,6 +296,8 @@ and open the template in the editor.
                         text += "<tr>";
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
+                        text += "<td>" + "<a> Alterar </a>" + "</td>";
+                        text += "<td>" + "<a> Excluir </a>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;

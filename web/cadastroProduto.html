@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Trabalho</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             body {
                 background-color: #DCFFB0;
@@ -200,7 +200,7 @@ and open the template in the editor.
             .triangulo2 {
                 position: absolute;
                 left: 655px;
-                top: 220px;
+                top: 274px;
                 border-top: 18px solid #F59A9A; 
                 border-left: 14px solid transparent; 
                 border-right: 14px solid transparent; 
@@ -289,7 +289,7 @@ and open the template in the editor.
                     var payload = {
                         id: $("#id").val(),
                         descricao: $("#descricao").val(),
-                        qtdeestoque: $("#qtdeestoque").val(),
+                        qtdeEstoque: $("#qtdeEstoque").val(),
                         valor: $("#valor").val(),
                         categoria_id: $("#categoria_id").val(),
                     };
@@ -315,12 +315,14 @@ and open the template in the editor.
             function cancelar() {
                 if ((document.getElementById('descricao').value = "")
                         || (document.getElementById('categoria_id').value = "")
+                        || (document.getElementById('id').value = "")
                         || (document.getElementById('valor').value = "")
-                        || (document.getElementById('qtdeestoque').value = "")) {
+                        || (document.getElementById('qtdeEstoque').value = "")) {
                     document.getElementById('descricao').value = "";
+                    document.getElementById('id').value = "";
                     document.getElementById('categoria_id').value = "";
                     document.getElementById('valor').value = "";
-                    document.getElementById('qtdeestoque').value = "";
+                    document.getElementById('qtdeEstoque').value = "";
                 }
             }
         </script>
@@ -335,7 +337,7 @@ and open the template in the editor.
                 <label for="preco" class="label4">Preço</label>
                 <input class="text3" type="text" id="valor"/>
                 <label for="estoque" class="label5">Estoque</label>
-                <input class="text4" type="text" id="qtdeestoque"/>
+                <input class="text4" type="text" id="qtdeEstoque"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
                 <input class="button2" onclick="cancelar()" type="button" value="Cancelar" />
 
@@ -343,7 +345,7 @@ and open the template in the editor.
 
         </div>
         <div class="menu">
-                <ul class="lista">
+            <ul class="lista">
                 <li class="expande-sublista"> <a class="produto">Produto</a> 
                     <div class="sublista">
                         <div>
@@ -355,7 +357,7 @@ and open the template in the editor.
             <div class="triangulo"></div>
         </div>
         <div class="triangulo2"></div>
-         <div class="copy">
+        <div class="copy">
             <label>Copyright @ Livre</label>
         </div>
 

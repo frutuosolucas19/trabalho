@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Trabalho</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             body {
                 background-color: #DCFFB0;
@@ -61,12 +62,20 @@ and open the template in the editor.
                 line-height: 14px;
                 color: black;
             }
+            .text0{
+                position: absolute;
+                width: 600px;
+                height: 20px;
+                left: 85px;
+                background: #F9FFFD;
+                border-radius: 10px;
+            }
             .text1 {
                 position: absolute;
                 width: 600px;
                 height: 20px;
                 left: 85px;
-                top: 65%;
+                top: 80px;
                 background: #F9FFFD;
                 border-radius: 10px;
             }
@@ -75,7 +84,7 @@ and open the template in the editor.
                 width: 600px;
                 height: 20px;
                 left: 85px;
-                top: 117px;
+                top: 170px;
                 background-color: #F9FFFD;
                 border-radius: 10px;
             }
@@ -84,7 +93,7 @@ and open the template in the editor.
                 width: 600px;
                 height: 20px;
                 left: 85px;
-                top: 202px;
+                top: 250px;
                 background-color: #F9FFFD;
                 border-radius: 10px;
             }
@@ -93,7 +102,7 @@ and open the template in the editor.
                 width: 600px;
                 height: 20px;
                 left: 85px;
-                top: 290px;
+                top: 325px;
                 background-color: #F9FFFD;
                 border-radius: 10px;
             }
@@ -108,6 +117,11 @@ and open the template in the editor.
                 line-height: 14px;
                 text-align: center;
 
+            }
+            .label0 {
+                position: absolute;
+                left: 85px;
+                top: -50%;
             }
             .label1{
                 position: absolute;
@@ -124,22 +138,22 @@ and open the template in the editor.
             .label2 {
                 position: absolute;
                 left: 85px;
-                top: 3%;
+                top: 50px;
             }
             .label3 {
                 position: absolute;
                 left: 85px;
-                top: 85px;
+                top: 130px;
             }
             .label4 {
                 position: absolute;
                 left: 85px;
-                top: 169px;
+                top: 217px;
             }
             .label5 {
                 position: absolute;
                 left: 85px;
-                top: 258px;
+                top: 300px;
             }
             .button1 {
                 position: absolute;
@@ -268,32 +282,61 @@ and open the template in the editor.
             }
 
         </style>
+        <script>
+            $(document).ready(function () {
+                //gravar dados
+                $("#gravar").click(function () {
+                    var payload = {
+                        id: $("#id").val(),
+                        descricao: $("#descricao").val(),
+                        qtdeestoque: $("#qtdeestoque").val(),
+                        valor: $("#valor").val(),
+                        categoria_id: $("#categoria_id").val(),
+                    };
+
+                    payload = JSON.stringify(payload);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/Trabalho/Venda/Produto",
+                        data: payload,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data, status) {
+                            alert('inserido com sucesso ');
+                        }
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <script>
             function cancelar() {
                 if ((document.getElementById('descricao').value = "")
-                        || (document.getElementById('categoria').value = "")
-                        || (document.getElementById('preco').value = "")
-                        || (document.getElementById('estoque').value = "")) {
+                        || (document.getElementById('categoria_id').value = "")
+                        || (document.getElementById('valor').value = "")
+                        || (document.getElementById('qtdeestoque').value = "")) {
                     document.getElementById('descricao').value = "";
-                    document.getElementById('categoria').value = "";
-                    document.getElementById('preco').value = "";
-                    document.getElementById('estoque').value = "";
+                    document.getElementById('categoria_id').value = "";
+                    document.getElementById('valor').value = "";
+                    document.getElementById('qtdeestoque').value = "";
                 }
             }
         </script>
         <div class="container">
             <form action="">
+                <label for="id" class="label0">Id</label>
+                <input class="text0" type="text" id="id"/>
                 <label for="descricao" class="label2">Descrição</label>
                 <input class="text1" type="text" id="descricao"/>
                 <label for="categoria" class="label3">Categoria</label>
-                <input class="text2" type="text" id="categoria"/>
+                <input class="text2" type="text" id="categoria_id"/>
                 <label for="preco" class="label4">Preço</label>
-                <input class="text3" type="text" id="preco"/>
+                <input class="text3" type="text" id="valor"/>
                 <label for="estoque" class="label5">Estoque</label>
-                <input class="text4" type="text" id="estoque"/>
-                <input class="button1" type="button" value="Salvar" />
+                <input class="text4" type="text" id="qtdeestoque"/>
+                <input id="gravar" class="button1" type="button" value="Salvar" />
                 <input class="button2" onclick="cancelar()" type="button" value="Cancelar" />
 
             </form>

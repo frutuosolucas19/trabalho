@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Trabalho</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             body {
                 background-color: #DCFFB0;
@@ -46,20 +47,8 @@ and open the template in the editor.
                 top: 25%;
                 background: #F9FFFD;
             }
-            a{
-                position: absolute;
-                left: 3%;
-                top: 2%;
-                text-decoration: none;
-                padding: 10px;
-                margin-bottom: 10px;
-                margin-top: 10px;
-                font-family: Roboto;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 20px;
-                line-height: 14px;
-                color: black;
+            td {
+                text-align: center;
             }
             .text1 {
                 position: absolute;
@@ -214,8 +203,22 @@ and open the template in the editor.
                 line-height: 14px;
                 color: black;
             }
+            a:link 
+            { 
+                text-decoration:none; 
+            } 
 
         </style>
+        <script>
+            $(document).ready(function () {
+                //consultar dados
+                $("#search").click(function () {
+                    $.get("http://localhost:8080/Trabalho/Venda/Produto", function (data, status) {
+                        display(data);
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container">
@@ -224,7 +227,7 @@ and open the template in the editor.
                 <input class="text1" type="text" id="id"/>
                 <label for="descricao" class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
-                <input class="button1" type="button" value="Pesquisar" />
+                <input id="search" class="button1" type="button" value="Pesquisar" />
 
             </form>
 
@@ -233,8 +236,8 @@ and open the template in the editor.
             E será feita na segunda entrega.
             -->
         </div>
-                <div class="menu">
-                <ul class="lista">
+        <div class="menu">
+            <ul class="lista">
                 <li class="expande-sublista"> <a class="consulta">Consulta Produto</a> 
                     <div class="sublista">
                         <div>
@@ -243,8 +246,9 @@ and open the template in the editor.
                     </div>
             </ul>
 
-                    <table>
-                <tr>
+            <div id="dados">
+                <table>
+                    <thead>
                     <th>Id</th>
                     <th>Descrição</th>
                     <th>Preço</th>
@@ -252,8 +256,31 @@ and open the template in the editor.
                     <th>Categoria</th>
                     <th>⠀⠀⠀⠀⠀⠀⠀</th>
                     <th>⠀⠀⠀⠀⠀⠀⠀</th>
-                </tr>
-            </table>
+                    </thead>
+                    <tbody id="produtos">
+
+                    </tbody>
+                </table>
+            </div>
+
+            <script>
+                function display(dados) {
+                    var text = "";
+                    for (ob in dados) {
+                        text += "<tr>";
+                        text += "<td>" + dados[ob].id + "</td>";
+                        text += "<td>" + dados[ob].descricao + "</td>";
+                        text += "<td>" + dados[ob].valor + "</td>";
+                        text += "<td>" + dados[ob].qtdeEstoque + "</td>";
+                        text += "<td>" + dados[ob].categoria_id + "</td>";
+                        text += "<td>" + "<a> Alterar </a>" + "</td>";
+                        text += "<td>" + "<a> Excluir </a>" + "</td>";
+                        text += "</tr>";
+                    }
+                    document.getElementById("produtos").innerHTML = text;
+                }
+            </script>
+
             <div class="triangulo"></div>
         </div>
         <div class="copy">

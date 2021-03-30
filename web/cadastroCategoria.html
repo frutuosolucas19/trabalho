@@ -231,7 +231,13 @@ and open the template in the editor.
             a:link 
             { 
                 text-decoration:none; 
-            } 
+            }
+            .excluir {
+                color: red;
+            }
+            .alterar {
+                color: blue;
+            }
 
         </style>
 
@@ -324,8 +330,8 @@ and open the template in the editor.
                         text += "<tr>";
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
-                        text += "<td>" + "<a href='#'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<input id='excluir' type='button' value='Excluir'/>" + "</td>";
+                        text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
+                        text += "<td>" + "<a href='#' onclick='excluir()' class='excluir'>Excluir</a>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;

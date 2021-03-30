@@ -206,7 +206,13 @@ and open the template in the editor.
             a:link 
             { 
                 text-decoration:none; 
-            } 
+            }
+            .excluir {
+                color: red;
+            }
+            .alterar {
+                color: blue;
+            }
 
         </style>
         <script>
@@ -273,8 +279,8 @@ and open the template in the editor.
                         text += "<td>" + dados[ob].valor + "</td>";
                         text += "<td>" + dados[ob].qtdeEstoque + "</td>";
                         text += "<td>" + dados[ob].categoria_id + "</td>";
-                        text += "<td>" + "<a href='#'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<a href='#'> Excluir </a>" + "</td>";
+                        text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
+                        text += "<td>" + "<a href='#' onclick='excluir()' class='excluir'>Excluir</a>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("produtos").innerHTML = text;

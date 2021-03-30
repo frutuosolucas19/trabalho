@@ -264,20 +264,16 @@ and open the template in the editor.
                         }
                     });
                 });
-                function excluir() {
                 $("#excluir").click(function () {
-                   
+
                     $.ajax({
                         type: "DELETE",
-                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/id",
-                        dataType: 'json',
-                        contentType: "application/json; charset=utf-8",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/",
                         success: function (data, status) {
                             alert('deletado com sucesso');
                         }
                     });
                 });
-            }
             });
         </script>
 
@@ -290,7 +286,7 @@ and open the template in the editor.
                 <input class="text1" type="text" id="id"/>
                 <label class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
-                <input id="salvar" class="button1" type="button" value="Salvar" />
+                <input id="gravar" class="button1" type="button" value="Salvar" />
 
             </form>
             <div class="menu">
@@ -329,7 +325,7 @@ and open the template in the editor.
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
                         text += "<td>" + "<a href='#'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<a href='#' onclick='excluir()'> Excluir </a>" + "</td>";
+                        text += "<td>" + "<input id='excluir' type='button' value='Excluir'/>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;

@@ -243,14 +243,14 @@ and open the template in the editor.
 
         <script>
             $(document).ready(function () {
-                //consultar dados
+                //consultar categorias
                 $("#search").click(function () {
                     $.get("http://localhost:8080/Trabalho/Venda/Categoria", function (data, status) {
                         display(data);
                     });
                 });
 
-                //gravar dados
+                //cadastrar uma categoria
                 $("#gravar").click(function () {
                     var payload = {
                         id: $("#id").val(),
@@ -270,13 +270,19 @@ and open the template in the editor.
                         }
                     });
                 });
+                //excluir uma categoria
                 $("#excluir").click(function () {
-
+                    
+                    var element = document.getElementById("id");
+ 
                     $.ajax({
                         type: "DELETE",
-                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/"+element,
                         success: function (data, status) {
                             alert('deletado com sucesso');
+                        },
+                        error:function (data, status) {
+                            alert('deu erro');
                         }
                     });
                 });
@@ -331,7 +337,7 @@ and open the template in the editor.
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
                         text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<a href='#' onclick='excluir()' class='excluir'>Excluir</a>" + "</td>";
+                        text += "<td>" + "<input id=excluir type='button' value='Excluir'/>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;

@@ -116,6 +116,22 @@ and open the template in the editor.
                 text-align: center;
                 color: #B30D0D;
             }
+            .button5 {
+                position: absolute;
+                left: 87%;
+                top: 64%;
+                width: 100px;
+                height: 25px;
+                background: green;
+                border-radius: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                text-align: center;
+                color: white;
+            }
             .triangulo {
                 position: absolute;
                 left: 17%;
@@ -272,17 +288,35 @@ and open the template in the editor.
                 });
                 //excluir uma categoria
                 $("#excluir").click(function () {
-                    
-                    var element = document.getElementById("id");
- 
+
+                    var categoriaId = document.getElementById("id");
+
                     $.ajax({
                         type: "DELETE",
-                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/"+element,
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/" + categoriaId,
                         success: function (data, status) {
                             alert('deletado com sucesso');
-                        },
-                        error:function (data, status) {
-                            alert('deu erro');
+                        }
+                    });
+                });
+                //alterar uma categoria
+                //Para alterar coloque o id da categoria que deseja alterar, e mude a descrição
+                $("#alterar").click(function () {
+                    var payload = {
+                        id: $("#id").val(),
+                        descricao: $("#descricao").val(),
+                    };
+
+                    payload = JSON.stringify(payload);
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria",
+                        data: payload,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data, status) {
+                            alert('alterado com sucesso ');
                         }
                     });
                 });
@@ -299,6 +333,7 @@ and open the template in the editor.
                 <label class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
+                <input id="alterar" class="button5" type="button" value="Alterar" />
 
             </form>
             <div class="menu">
@@ -336,8 +371,8 @@ and open the template in the editor.
                         text += "<tr>";
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
-                        text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<a href='#' onclick='excluir()' class='excluir'> Excluir </a>" + "</td>";
+                        text += "<td>" + "<input type=button id=alterar value='Alterar'/>" + "</td>";
+                        text += "<td>" + "<input type=button id=excluir value='Excluir'/>" + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;

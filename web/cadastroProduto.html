@@ -278,9 +278,7 @@ and open the template in the editor.
                         valor: $("#valor").val(),
                         categoria_id: $("#categoria_id").val(),
                     };
-
                     payload = JSON.stringify(payload);
-
                     $.ajax({
                         type: "POST",
                         url: "http://localhost:8080/Trabalho/Venda/Produto",
@@ -292,6 +290,7 @@ and open the template in the editor.
                         }
                     });
                 });
+
                 $("#alterar").click(function () {
                     var payload = {
                         id: $("#id").val(),
@@ -300,7 +299,6 @@ and open the template in the editor.
                         valor: $("#valor").val(),
                         categoria_id: $("#categoria_id").val(),
                     };
-
                     payload = JSON.stringify(payload);
 
                     $.ajax({
@@ -312,6 +310,37 @@ and open the template in the editor.
                         success: function (data, status) {
                             alert('alterado com sucesso ');
                             setTimeout("window.location='consultaProduto.html'", 500);
+                        }
+                    });
+                });
+                $("#search").click(function () {
+                    $.get("http://localhost:8080/Trabalho/Venda/Categoria", function (data, status) {
+                        display(data);
+                    });
+                });
+                $("#search1").click(function () {
+
+                    var payload = {
+                        id: $("#id").val(),
+                        descricao: $("#descricao").val(),
+                    }
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost:8080/Trabalho/Venda/Produto",
+                        data: payload,
+                        dataType: 'json',
+                        success: function (response) {
+
+                            var len = response.length;
+
+                            $("#sel_user").empty();
+                            for (var i = 0; i < len; i++) {
+                                var id = response[i]['id'];
+                                var descricao = response[i]['descricao'];
+
+                                $("#sel_user").append("<option value='" + id + "'>" + descricao + "</option>");
+
+                            }
                         }
                     });
                 });
@@ -357,7 +386,8 @@ and open the template in the editor.
             <div class="produto">Produto</div>
             <div class="triangulo"></div>
         </div>
-        <div class="triangulo2"></div>
+        <div class="triangulo2">
+        </div>
         <div class="copy">
             <label>Copyright @ Livre</label>
         </div>

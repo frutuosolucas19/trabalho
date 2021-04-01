@@ -280,11 +280,22 @@ and open the template in the editor.
                         text += "<td>" + dados[ob].qtdeEstoque + "</td>";
                         text += "<td>" + dados[ob].categoria_id + "</td>";
                         text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
-                        text += "<td>" + "<a href='#' onclick='excluir()' class='excluir'>Excluir</a>" + "</td>";
+                        text += "<td>" + '<a href=# onclick=excluir('+dados[ob].id+') class=excluir> Excluir </a>' + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("produtos").innerHTML = text;
                 }
+                function excluir(id) {
+                    
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/Trabalho/Venda/Produto/excluir/" + id,
+                        success: function (data, status) {
+                            alert('deletado com sucesso');
+                        }
+                    });
+                }
+                ;
             </script>
 
             <div class="triangulo"></div>

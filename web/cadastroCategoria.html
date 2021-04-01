@@ -286,19 +286,6 @@ and open the template in the editor.
                         }
                     });
                 });
-                //excluir uma categoria
-                $("#excluir").click(function () {
-
-                    var categoriaId = document.getElementById("id");
-
-                    $.ajax({
-                        type: "DELETE",
-                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/" + categoriaId,
-                        success: function (data, status) {
-                            alert('deletado com sucesso');
-                        }
-                    });
-                });
                 //alterar uma categoria
                 //Para alterar coloque o id da categoria que deseja alterar, e mude a descrição
                 $("#alterar").click(function () {
@@ -371,12 +358,25 @@ and open the template in the editor.
                         text += "<tr>";
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
-                        text += "<td>" + "<input type=button id=alterar value='Alterar'/>" + "</td>";
-                        text += "<td>" + "<input type=button id=excluir value='Excluir'/>" + "</td>";
+                        text += "<td>" + "<a href=# class='alterar'> Alterar </a>" + "</td>";
+                        text += "<td>" + '<a href=# onclick=excluir('+dados[ob].id+') class=excluir> Excluir </a>' + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;
                 }
+                ;
+                function excluir(id) {
+                    
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/" + id,
+                        success: function (data, status) {
+                            alert('deletado com sucesso');
+                        }
+                    });
+                }
+                ;
+
             </script>
 
             <div class="copy">

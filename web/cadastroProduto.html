@@ -219,41 +219,10 @@ and open the template in the editor.
             {
                 border: red solid 1px;   
             }
-            .lista{
-                display: inline-block;
-                background-color: #C4C4C4;
-                padding: 2px;
-                position: absolute;
-                left: 3%;
-                top: -25%;
-            }
-            .lista li {
-                display: inline;
-                background-color: #C4C4C4;
-                padding: 10px;
-                border-radius: 50%
-            }
-
-            .sublista{
-                display: none;
-                position: absolute;
-                left: 50px;
-                top: 45px;
-                height: 25px;
-                background-color: #C4C4C4;
-                min-width: 130px;
-                z-index: 1;
-
-            }
-
-            .sublista ul li{
-                display: block;
-                text-align: left;
-            }
-            .expande-sublista:hover .sublista{
-                display: block;
-            }
             .produto {
+                position: absolute;
+                left: 90px;
+                top: 19px;
                 font-family: Roboto;
                 font-style: normal;
                 font-weight: normal;
@@ -385,15 +354,7 @@ and open the template in the editor.
 
         </div>
         <div class="menu">
-            <ul class="lista">
-                <li class="expande-sublista"> <a class="produto">Produto</a> 
-                    <div class="sublista">
-                        <div>
-                            <div><a class="index" href="index.html">Tela Inicial</a></div>
-                        </div>
-                    </div>
-            </ul>
-
+            <div class="produto">Produto</div>
             <div class="triangulo"></div>
         </div>
         <div class="triangulo2"></div>

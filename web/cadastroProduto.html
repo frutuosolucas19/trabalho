@@ -280,6 +280,22 @@ and open the template in the editor.
                 line-height: 14px;
                 color: black;
             }
+            .button5 {
+                position: absolute;
+                left: 30%;
+                top: 390px;
+                width: 100px;
+                height: 25px;
+                background: green;
+                border-radius: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                text-align: center;
+                color: white;
+            }
 
         </style>
         <script>
@@ -304,6 +320,29 @@ and open the template in the editor.
                         contentType: "application/json; charset=utf-8",
                         success: function (data, status) {
                             alert('inserido com sucesso ');
+                        }
+                    });
+                });
+                $("#alterar").click(function () {
+                    var payload = {
+                        id: $("#id").val(),
+                        descricao: $("#descricao").val(),
+                        qtdeEstoque: $("#qtdeEstoque").val(),
+                        valor: $("#valor").val(),
+                        categoria_id: $("#categoria_id").val(),
+                    };
+
+                    payload = JSON.stringify(payload);
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/Trabalho/Venda/Produto",
+                        data: payload,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data, status) {
+                            alert('alterado com sucesso ');
+                            setTimeout("window.location='consultaProduto.html'", 500);
                         }
                     });
                 });
@@ -339,6 +378,7 @@ and open the template in the editor.
                 <label for="estoque" class="label5">Estoque</label>
                 <input class="text4" type="text" id="qtdeEstoque"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
+                <input id="alterar" class="button5" type="button" value="Alterar" />
                 <input class="button2" onclick="cancelar()" type="button" value="Cancelar" />
 
             </form>

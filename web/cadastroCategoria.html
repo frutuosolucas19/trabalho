@@ -286,27 +286,6 @@ and open the template in the editor.
                         }
                     });
                 });
-                //alterar uma categoria
-                //Para alterar coloque o id da categoria que deseja alterar, e mude a descrição
-                $("#alterar").click(function () {
-                    var payload = {
-                        id: $("#id").val(),
-                        descricao: $("#descricao").val(),
-                    };
-
-                    payload = JSON.stringify(payload);
-
-                    $.ajax({
-                        type: "PUT",
-                        url: "http://localhost:8080/Trabalho/Venda/Categoria",
-                        data: payload,
-                        dataType: 'json',
-                        contentType: "application/json; charset=utf-8",
-                        success: function (data, status) {
-                            alert('alterado com sucesso ');
-                        }
-                    });
-                });
             });
         </script>
 
@@ -320,7 +299,6 @@ and open the template in the editor.
                 <label class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
-                <input id="alterar" class="button5" type="button" value="Alterar" />
 
             </form>
             <div class="menu">
@@ -358,15 +336,15 @@ and open the template in the editor.
                         text += "<tr>";
                         text += "<td>" + dados[ob].id + "</td>";
                         text += "<td>" + dados[ob].descricao + "</td>";
-                        text += "<td>" + "<a href=# class='alterar'> Alterar </a>" + "</td>";
-                        text += "<td>" + '<a href=# onclick=excluir('+dados[ob].id+') class=excluir> Excluir </a>' + "</td>";
+                        text += "<td>" + '<a href=# onclick=alterar(' + dados[ob].id + ') class=alterar> Alterar </a>' + "</td>";
+                        text += "<td>" + '<a href=# onclick=excluir(' + dados[ob].id + ') class=excluir> Excluir </a>' + "</td>";
                         text += "</tr>";
                     }
                     document.getElementById("categorias").innerHTML = text;
                 }
                 ;
                 function excluir(id) {
-                    
+
                     $.ajax({
                         type: "DELETE",
                         url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/" + id,
@@ -376,6 +354,28 @@ and open the template in the editor.
                     });
                 }
                 ;
+                //alterar uma categoria
+                //Para alterar uma categoria escreva a descrição no input text e clique em alterar
+                //não precisa colocar o id pois ele paga o id da linha selecionada
+                function alterar(id) {
+                    var payload = {
+                        id: id,
+                        descricao: $("#descricao").val(),
+                    };
+
+                    payload = JSON.stringify(payload);
+
+                    $.ajax({
+                        type: "PUT",
+                        url: "http://localhost:8080/Trabalho/Venda/Categoria",
+                        data: payload,
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data, status) {
+                            alert('alterado com sucesso ');
+                        }
+                    });
+                };
 
             </script>
 

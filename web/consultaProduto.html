@@ -105,8 +105,24 @@ and open the template in the editor.
             .button1 {
                 position: absolute;
                 left: 78%;
-                top: 64%;
-                width: 100px;
+                top: 110%;
+                width: 150px;
+                height: 25px;
+                background: #85A7FE;
+                border-radius: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                text-align: center;
+                color: #B30D0D;
+            }
+            .button2 {
+                position: absolute;
+                left: 78%;
+                top: 30%;
+                width: 150px;
                 height: 25px;
                 background: #85A7FE;
                 border-radius: 10px;
@@ -217,7 +233,7 @@ and open the template in the editor.
         </style>
         <script>
             $(document).ready(function () {
-                //consultar dados
+                //consultar todos os produtos
                 $("#search").click(function () {
                     $.get("http://localhost:8080/Trabalho/Venda/Produto", function (data, status) {
                         display(data);
@@ -233,7 +249,8 @@ and open the template in the editor.
                 <input class="text1" type="text" id="id"/>
                 <label for="descricao" class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
-                <input id="search" class="button1" type="button" value="Pesquisar" />
+                <input class="button2" type="button" value="Pesquisar um" />
+                <input id="search" class="button1" type="button" value="Pesquisar todos" />
 
             </form>
 
@@ -279,7 +296,7 @@ and open the template in the editor.
                         text += "<td>" + dados[ob].valor + "</td>";
                         text += "<td>" + dados[ob].qtdeEstoque + "</td>";
                         text += "<td>" + dados[ob].categoria_id + "</td>";
-                        text += "<td>" + "<a href='#' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
+                        text += "<td>" + "<a href='cadastroProduto.html' onclick='alterar()' class='alterar'> Alterar </a>" + "</td>";
                         text += "<td>" + '<a href=# onclick=excluir('+dados[ob].id+') class=excluir> Excluir </a>' + "</td>";
                         text += "</tr>";
                     }

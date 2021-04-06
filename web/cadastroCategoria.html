@@ -175,11 +175,27 @@ and open the template in the editor.
                 line-height: 14px;
                 color: black;
             }
-            .carregar1 {
+            .pesquisar1 {
                 position: absolute;
                 left: 88%;
-                top: 185%;
-                width: 100px;
+                top: 150%;
+                width: 125px;
+                height: 25px;
+                background: #F59A9A;
+                border-radius: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                line-height: 14px;
+                text-align: center;
+                color: #0F27FF;
+            }
+            .pesquisar2 {
+                position: absolute;
+                left: 88%;
+                top: 230%;
+                width: 125px;
                 height: 25px;
                 background: #F59A9A;
                 border-radius: 10px;
@@ -218,8 +234,18 @@ and open the template in the editor.
         <script>
             $(document).ready(function () {
                 //consultar categorias
-                $("#search").click(function () {
+                $("#search1").click(function () {
                     $.get("http://localhost:8080/Trabalho/Venda/Categoria", function (data, status) {
+                        display(data);
+                    });
+                });
+                $("#search2").click(function () {
+                    var id = {
+                        id: $("#id").val()
+                    }
+                    id = JSON.stringify(id);
+
+                    $.get("http://localhost:8080/Trabalho/Venda/Categoria/"+id, function (data, status) {
                         display(data);
                     });
                 });
@@ -257,6 +283,7 @@ and open the template in the editor.
                 <label class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
+                <input class="pesquisar2" type="button" id="search2" value="Pesquisar um" />
 
             </form>
             <div class="menu">
@@ -266,7 +293,8 @@ and open the template in the editor.
             </div>
 
             <div id="dados">
-                <input class="carregar1" type="button" id="search" value="Carregar" />
+                <input class="pesquisar1" type="button" id="search1" value="Pesquisar todos" />
+                
                 <table>
                     <thead>
                     <th>Id</th>

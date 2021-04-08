@@ -85,8 +85,7 @@ and open the template in the editor.
                 height: 20px;
                 left: 85px;
                 top: 170px;
-                background-color: #F9FFFD;
-                border-radius: 10px;
+
             }
             .text3 {
                 position: absolute;
@@ -266,9 +265,32 @@ and open the template in the editor.
                 color: white;
             }
 
+            .combobox{
+                position: absolute;
+                left: 50%;
+
+            }
+
         </style>
         <script>
+            function buscaCategorias() {
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/Trabalho/Venda/Categoria",
+                    dataType: 'json'
+                });
+            }
+            function display(dados) {
+                var text = "";
+                for (ob in dados) {
+                    text += "<option value='{$dados[ob].id}'></option>";
+                }
+                document.getElementById("combobox").innerHTML = text;
+            }
+        </script>
+        <script>
             $(document).ready(function () {
+
                 //gravar dados
                 $("#gravar").click(function () {
                     var payload = {
@@ -276,7 +298,7 @@ and open the template in the editor.
                         descricao: $("#descricao").val(),
                         qtdeEstoque: $("#qtdeEstoque").val(),
                         valor: $("#valor").val(),
-                        categoria_id: $("#categoria_id").val(),
+                        categoria_id: $("#combobox").val()
                     };
                     payload = JSON.stringify(payload);
                     $.ajax({
@@ -313,37 +335,6 @@ and open the template in the editor.
                         }
                     });
                 });
-                $("#search").click(function () {
-                    $.get("http://localhost:8080/Trabalho/Venda/Categoria", function (data, status) {
-                        display(data);
-                    });
-                });
-                $("#search1").click(function () {
-
-                    var payload = {
-                        id: $("#id").val(),
-                        descricao: $("#descricao").val(),
-                    }
-                    $.ajax({
-                        type: "GET",
-                        url: "http://localhost:8080/Trabalho/Venda/Produto",
-                        data: payload,
-                        dataType: 'json',
-                        success: function (response) {
-
-                            var len = response.length;
-
-                            $("#sel_user").empty();
-                            for (var i = 0; i < len; i++) {
-                                var id = response[i]['id'];
-                                var descricao = response[i]['descricao'];
-
-                                $("#sel_user").append("<option value='" + id + "'>" + descricao + "</option>");
-
-                            }
-                        }
-                    });
-                });
             });
         </script>
     </head>
@@ -369,11 +360,11 @@ and open the template in the editor.
                 <input class="text0" type="text" id="id"/>
                 <label for="descricao" class="label2">Descrição</label>
                 <input class="text1" type="text" id="descricao"/>
-                <label for="categoria" class="label3">Categoria</label>
-                <input class="text2" type="text" id="categoria_id"/>
-                <label for="preco" class="label4">Preço</label>
+                <label  class="label3">Categoria</label>
+                <select class="text2" name="combo" id="combobox"> </select>
+                <label class="label4">Preço</label>
                 <input class="text3" type="text" id="valor"/>
-                <label for="estoque" class="label5">Estoque</label>
+                <label class="label5">Estoque</label>
                 <input class="text4" type="text" id="qtdeEstoque"/>
                 <input id="gravar" class="button1" type="button" value="Salvar" />
                 <input id="alterar" class="button5" type="button" value="Alterar" />
@@ -385,8 +376,6 @@ and open the template in the editor.
         <div class="menu">
             <div class="produto">Produto</div>
             <div class="triangulo"></div>
-        </div>
-        <div class="triangulo2">
         </div>
         <div class="copy">
             <label>Copyright @ Livre</label>

@@ -81,10 +81,12 @@ and open the template in the editor.
             }
             .text2 {
                 position: absolute;
-                width: 600px;
-                height: 20px;
+                width: 607px;
+                height: 25px;
                 left: 85px;
                 top: 170px;
+                background: #F9FFFD;
+                border-radius: 10px;
 
             }
             .text3 {
@@ -196,16 +198,6 @@ and open the template in the editor.
                 height: 0; 
                 width: 0; 
             }
-            .triangulo2 {
-                position: absolute;
-                left: 655px;
-                top: 274px;
-                border-top: 18px solid #F59A9A; 
-                border-left: 14px solid transparent; 
-                border-right: 14px solid transparent; 
-                height: 0; 
-                width: 0; 
-            }
             table{
                 position: absolute;
                 width: 512px;
@@ -277,19 +269,23 @@ and open the template in the editor.
                 $.ajax({
                     type: "GET",
                     url: "http://localhost:8080/Trabalho/Venda/Categoria",
-                    dataType: 'json'
+                    dataType: 'json',
+                    success: function (res) {
+                            display(res);
+                        }
                 });
             }
             function display(dados) {
                 var text = "";
                 for (ob in dados) {
-                    text += "<option value='{$dados[ob].id}'>${dados[ob].descricao}</option>";
+                    text += "<option value="+dados[ob].id+">"+ dados[ob].descricao + "</option>";
                 }
                 document.getElementById("combobox").innerHTML = text;
             }
         </script>
         <script>
             $(document).ready(function () {
+                buscaCategorias();
 
                 //gravar dados
                 $("#gravar").click(function () {
@@ -342,13 +338,13 @@ and open the template in the editor.
         <script>
             function cancelar() {
                 if ((document.getElementById('descricao').value = "")
-                        || (document.getElementById('categoria_id').value = "")
+                        || (document.getElementById('combobox').value = "")
                         || (document.getElementById('id').value = "")
                         || (document.getElementById('valor').value = "")
                         || (document.getElementById('qtdeEstoque').value = "")) {
                     document.getElementById('descricao').value = "";
                     document.getElementById('id').value = "";
-                    document.getElementById('categoria_id').value = "";
+                    document.getElementById('combobox').value = "";
                     document.getElementById('valor').value = "";
                     document.getElementById('qtdeEstoque').value = "";
                 }
@@ -361,7 +357,8 @@ and open the template in the editor.
                 <label for="descricao" class="label2">Descrição</label>
                 <input class="text1" type="text" id="descricao"/>
                 <label  class="label3">Categoria</label>
-                <select class="text2" name="combo" id="combobox"> </select>
+                <select class="text2" onclick="buscaCategorias()" name="combo" id="combobox" style="width:44.5%; height:30px;"> 
+                </select>
                 <label class="label4">Preço</label>
                 <input class="text3" type="text" id="valor"/>
                 <label class="label5">Estoque</label>

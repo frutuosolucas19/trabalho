@@ -283,7 +283,7 @@ and open the template in the editor.
             function display(dados) {
                 var text = "";
                 for (ob in dados) {
-                    text += "<option value='{$dados[ob].id}'></option>";
+                    text += "<option value='{$dados[ob].id}'>${dados[ob].descricao}</option>";
                 }
                 document.getElementById("combobox").innerHTML = text;
             }

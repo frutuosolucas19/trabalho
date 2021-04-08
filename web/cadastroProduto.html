@@ -262,6 +262,64 @@ and open the template in the editor.
                 left: 50%;
 
             }
+            .dp-menu ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+
+            .dp-menu ul li {
+                display: inline;
+                position: relative;
+            }
+
+            .dp-menu ul li a {
+
+                text-decoration: none;
+                display: inline-block;
+                padding: 10px;
+                transition: background .3s;
+            }
+
+            /*sub menu*/
+            .dp-menu ul ul {
+                display: none;
+                left: 0;
+                position: absolute;
+            }
+
+            .dp-menu ul li:hover ul {
+                display: block;
+            }
+
+            .dp-menu ul ul {
+                width: 150px
+            }
+
+            .dp-menu ul ul li a {
+                display: block;
+            }
+            .produtos{
+               left:50px;
+               top:3px;
+               font-family: Roboto;
+               font-style: normal;
+               font-weight: normal;
+               font-size: 20px;
+               line-height: 14px;
+               color: black;
+            }
+            a{
+               position: relative;
+               left: 60px;
+               text-decoration: none;
+               width: 50px;
+               height: 10px;
+               margin-bottom: 10px;
+               margin-top: -5px;
+               color:black;
+               background-color: #C4C4C4;
+            }
 
         </style>
         <script>
@@ -371,7 +429,16 @@ and open the template in the editor.
 
         </div>
         <div class="menu">
-            <div class="produto">Produto</div>
+            <nav class="dp-menu">
+                    <ul>
+                        <li><a class="produtos" href="#"><font color="black">Produto</font></a>
+                            <ul>
+                                <li><a class="voltar" href="index.html">Voltar</a></li>
+                            </ul>
+                        </li>
+                    </ul>   
+
+                </nav>
             <div class="triangulo"></div>
         </div>
         <div class="copy">

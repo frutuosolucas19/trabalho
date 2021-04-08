@@ -68,6 +68,21 @@ and open the template in the editor.
                 background-color: #F9FFFD;
                 border-radius: 10px;
             }
+            a{
+                position: absolute;
+                left: 3%;
+                top: 2%;
+                text-decoration: none;
+                padding: 10px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
             label {
                 position: absolute;
                 left: 46%;
@@ -195,6 +210,66 @@ and open the template in the editor.
             .alterar {
                 color: blue;
             }
+            .dp-menu ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+
+            .dp-menu ul li {
+                display: inline;
+                position: relative;
+            }
+
+            .dp-menu ul li a {
+
+                text-decoration: none;
+                display: inline-block;
+                padding: 10px;
+                transition: background .3s;
+            }
+
+            /*sub menu*/
+            .dp-menu ul ul {
+                display: none;
+                left: 0;
+                position: absolute;
+            }
+
+            .dp-menu ul li:hover ul {
+                display: block;
+            }
+
+            .dp-menu ul ul {
+                width: 150px
+            }
+
+            .dp-menu ul ul li a {
+                display: block;
+            }
+            .consulta{
+               left:50px;
+               top:0px;
+               font-family: Roboto;
+               font-style: normal;
+               width: 140px;
+               font-weight: normal;
+               font-size: 20px;
+               line-height: 14px;
+               color: black;
+            }
+            a{
+               position: relative;
+               left: 70px;
+               top:30px;
+               text-decoration: none;
+               width: 70px;
+               height: 10px;
+               margin-bottom: 10px;
+               margin-top: -5px;
+               color:black;
+               background-color: #C4C4C4;
+            }
 
         </style>
         <script>
@@ -215,7 +290,7 @@ and open the template in the editor.
                 <input class="text1" type="text" id="id"/>
                 <label for="descricao" class="label3">Descrição</label>
                 <input class="text2" type="text" id="descricao"/>
-                <input class="button2" type="button" value="Pesquisar um" />
+                <input id="search1" class="button2" type="button" value="Pesquisar" />
                 <input id="search" class="button1" type="button" value="Pesquisar todos" />
 
             </form>
@@ -226,7 +301,16 @@ and open the template in the editor.
             -->
         </div>
         <div class="menu">
-           <div class="consulta">Consulta Produto</div>
+            <nav class="dp-menu">
+                    <ul>
+                        <li><a class="consulta" href="#"><font color="black">Consulta Produto</font></a>
+                            <ul>
+                                <li><a class="voltar" href="index.html">Voltar</a></li>
+                            </ul>
+                        </li>
+                    </ul>   
+
+                </nav>
 
             <div id="dados">
                 <table>

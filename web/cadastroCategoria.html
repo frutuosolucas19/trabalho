@@ -100,6 +100,21 @@ and open the template in the editor.
                 left: 28%;
                 top: 3%;
             }
+            a{
+                position: absolute;
+                left: 3%;
+                top: 2%;
+                text-decoration: none;
+                padding: 10px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 20px;
+                line-height: 14px;
+                color: black;
+            }
             .button1 {
                 position: absolute;
                 left: 78%;
@@ -228,6 +243,66 @@ and open the template in the editor.
             .alterar {
                 color: blue;
             }
+            .dp-menu ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+
+            .dp-menu ul li {
+                display: inline;
+                position: relative;
+            }
+
+            .dp-menu ul li a {
+
+                text-decoration: none;
+                display: inline-block;
+                padding: 10px;
+                transition: background .3s;
+            }
+
+            /*sub menu*/
+            .dp-menu ul ul {
+                display: none;
+                left: 0;
+                position: absolute;
+            }
+
+            .dp-menu ul li:hover ul {
+                display: block;
+            }
+
+            .dp-menu ul ul {
+                width: 150px
+            }
+
+            .dp-menu ul ul li a {
+                display: block;
+            }
+            .cadastros{
+               left:50px;
+               top:3px;
+               font-family: Roboto;
+               font-style: normal;
+               font-weight: normal;
+               font-size: 20px;
+               line-height: 14px;
+               color: black;
+            }
+            a{
+               position: relative;
+               left: 60px;
+               top:1px;
+               text-decoration: none;
+               width: 50px;
+               height: 10px;
+               margin-bottom: 10px;
+               margin-top: -5px;
+               color:black;
+               background-color: #C4C4C4;
+            }
+            
 
         </style>
 
@@ -245,7 +320,7 @@ and open the template in the editor.
                     }
                     id = JSON.stringify(id);
 
-                    $.get("http://localhost:8080/Trabalho/Venda/Categoria/"+id, function (data, status) {
+                    $.get("http://localhost:8080/Trabalho/Venda/Categoria/" + id, function (data, status) {
                         display(data);
                     });
                 });
@@ -287,14 +362,23 @@ and open the template in the editor.
 
             </form>
             <div class="menu">
-                <div class="categoria">Categoria</div>
+                <nav class="dp-menu">
+                    <ul>
+                        <li><a class="cadastros" href="#"><font color="black">Categoria</font></a>
+                            <ul>
+                                <li><a class="voltar" href="index.html">Voltar</a></li>
+                            </ul>
+                        </li>
+                    </ul>   
+
+                </nav>
 
                 <div class="triangulo"></div>
             </div>
 
             <div id="dados">
                 <input class="pesquisar1" type="button" id="search1" value="Pesquisar todos" />
-                
+
                 <table>
                     <thead>
                     <th>Id</th>
@@ -354,7 +438,8 @@ and open the template in the editor.
                             alert('alterado com sucesso ');
                         }
                     });
-                };
+                }
+                ;
 
             </script>
 

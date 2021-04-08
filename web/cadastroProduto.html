@@ -345,15 +345,7 @@ and open the template in the editor.
             $(document).ready(function () {
             buscaCategorias();
                     //gravar dados
-                    /*{
-                     * "id": 113,
-                            "descricao": "sabão",
-                            "qtdeEstoque": 11,
-                            "valor": 10,
-                            "categoria":{
-                            "id":1
-                            }
-                    }*/
+                    
             $("#gravar").click(function () {
                 var payload = {
                     id: $("#id").val(),
@@ -371,6 +363,7 @@ and open the template in the editor.
                     contentType: "application/json; charset=utf-8",
                     success: function (data, status) {
                         alert('inserido com sucesso ');
+                        setTimeout("window.location='consultaProduto.html'", 500);
                     }
                 });
             });
@@ -381,7 +374,7 @@ and open the template in the editor.
                     descricao: $("#descricao").val(),
                     qtdeEstoque: $("#qtdeEstoque").val(),
                     valor: $("#valor").val(),
-                    categoria_id: $("#categoria_id").val(),
+                    categoria_id: $("#categoria_id").val()
             };
                     payload = JSON.stringify(payload);
                     $.ajax({

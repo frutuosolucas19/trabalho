@@ -349,10 +349,11 @@ and open the template in the editor.
             $("#gravar").click(function () {
                 var payload = {
                     id: $("#id").val(),
-                    descricao: $("#descricao").val(),
+
+            descricao: $("#descricao").val(),
                     qtdeEstoque: $("#qtdeEstoque").val(),
                     valor: $("#valor").val(),
-                    categoria_id: $("#combobox").val()
+                    categoria_id: $("#combobox option:selected").val()
                 };
                 payload = JSON.stringify(payload);
                 $.ajax({
@@ -374,7 +375,7 @@ and open the template in the editor.
                     descricao: $("#descricao").val(),
                     qtdeEstoque: $("#qtdeEstoque").val(),
                     valor: $("#valor").val(),
-                    categoria_id: $("#categoria_id").val()
+                    categoria_id: $("#combobox option:selected").val()
             };
                     payload = JSON.stringify(payload);
                     $.ajax({

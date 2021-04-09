@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class Conexao {
 
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc:postgresql://localhost/trabalho12";
+    private static final String URL_CONEXAO = "jdbc:postgresql://localhost/trabalho13";
     private static final String USUARIO = "postgres";
     private static final String SENHA = "1523647";
 

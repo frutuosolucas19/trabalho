@@ -6,6 +6,7 @@
 package dao;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import entidades.Produto;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;

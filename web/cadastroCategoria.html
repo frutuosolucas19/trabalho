@@ -421,6 +421,7 @@ and open the template in the editor.
                         url: "http://localhost:8080/Trabalho/Venda/Categoria/excluir/" + id,
                         success: function (data, status) {
                             alert('deletado com sucesso');
+                             window.location.reload();
                         }
                     });
                 }
@@ -431,7 +432,7 @@ and open the template in the editor.
                 function alterar(id) {
                     var payload = {
                         id: id,
-                        descricao: $("#descricao").val(),
+                        descricao: $("#descricao").val()
                     };
 
                     payload = JSON.stringify(payload);
@@ -444,6 +445,7 @@ and open the template in the editor.
                         contentType: "application/json; charset=utf-8",
                         success: function (data, status) {
                             alert('alterado com sucesso ');
+                            window.location.reload();
                         }
                     });
                 }
